@@ -1,0 +1,5 @@
+#/usr/bin/env bash
+complete -W "$(xo-cli list-objects type=VM | \
+jq -r 'map(.name_label) | @sh ')" \
+pre-upgradevm restore-upgradevm post-upgradevm \
+start-vm stop-vm restart-vm

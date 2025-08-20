@@ -1,0 +1,20 @@
+function start-vm {
+    local uuid
+    uuid=$(xo-cli list-objects type=VM name_label="${1}" |\
+    jq -r '.[0].uuid')
+    xo-cli vm.start id="${uuid}"
+}
+
+function stop-vm {
+    local uuid
+    uuid=$(xo-cli list-objects type=VM name_label="${1}" |\
+    jq -r '.[0].uuid')
+    xo-cli vm.stop id="${uuid}"
+}
+
+function restart-vm {
+    local uuid
+    uuid=$(xo-cli list-objects type=VM name_label="${1}" |\
+    jq -r '.[0].uuid')
+    xo-cli vm.restart id="${uuid}"
+}
